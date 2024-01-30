@@ -29,24 +29,21 @@ def recognize_from_file(filename):
         time.sleep(.5)   
     print(results)
     txtname = filename.split(".")[0]
-    f = os.path.join("C:\\Users\\xin\\Desktop\\pydub\\Recognized_Text", f"{txtname}.txt")
+    f = os.path.join("your path of Recognized_Text", f"{txtname}.txt")
+    # f = os.path.join("C:\\Users\\xin\\Desktop\\batch_recognize_audio_to_text\\Recognized_Text", f"{txtname}.txt")
     with open(f, "w") as file:
         for text in results:
             file.write(f"{text}\n")
         file.close
-
-for file in os.listdir("./untrans"):
-    if file.endswith(".wav"):
-        transTo16khz.tran_to_16khz(file)
+# for filename in os.listdir("./untrans"):
+for filename in os.listdir("your path of not16khz_wavs folders"):
+    if filename.endswith(".wav"):
+        transTo16khz.tran_to_16khz(filename)
 
 for filename in os.listdir("./"):
     if filename.endswith(".wav"):
         recognize_from_file(filename)
 
-for file in os.listdir("./untrans"):
-    if file.endswith(".wav"):
-        movefiles.move_files_to_txts(file)
-
-
-
-# recognize_from_file("2_161307.wav")
+for filename in os.listdir("your path of not16khz_wavs folders"):
+    if filename.endswith(".wav"):
+        movefiles.move_files_to_txts(filename)
